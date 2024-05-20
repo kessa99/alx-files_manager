@@ -9,8 +9,9 @@ class DBClient {
 
         // FORME L'URL DE COMMEXION A MONGODB A PARTIR DES PARAMETRES CI-DESSUS
         const url = `mongodb://${host}:${port}`;
-        this.client = new MongoClient(url, { useUnifiedTopology: true, useUnifiedTopology: true});
+        this.client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true});
         this.dbName = database;
+        this.isConnected = false;
 
         // ESSAIE DE SE CONNECTER A LA BASE DE DONNEES
         this.client.connect()
@@ -71,4 +72,4 @@ class DBClient {
 
 // Exporte une instance de la classe DBClient
 const dbClient = new DBClient();
-module.export = dbClient;
+module.exports = dbClient;
